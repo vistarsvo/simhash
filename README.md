@@ -1,18 +1,14 @@
-SimHashPHP
+SimHash
 ==========
 
 > This is the another version of SimHashPHP. The fork. The original version is [here](https://github.com/tgalopin/simhashphp)
 
-What is SimHashPHP ?
+What is SimHash ?
 --------------------
 
-SimHashPHP is a PHP library that port the SimHash algorithm in PHP.
+SimHash is a PHP library that port the SimHash algorithm in PHP.
 This algorithm, created by Moses Charikar, provides an efficient way to compute a similarity index between two texts.
-It is used by Google internally to detect dupplicate content.
-
-See ["SimHash or the way to compare quickly two datasets"](https://titouangalopin.com/2014/06/29/simhash/) for more informations.
-
-[![Build Status](https://secure.travis-ci.org/tgalopin/SimHashPhp.png?branch=master)](http://travis-ci.org/tgalopin/SimHashPhp)
+It is used by Google internally to detect duplicate content.
 
 How to use it ?
 ---------------
@@ -20,12 +16,10 @@ How to use it ?
 Install it with [Composer](https://getcomposer.org):
 
 ``` sh
-composer require tga/simhash-php
+composer require vistarsvo/simhash
 ```
 
 Once installed, include `vendor/autoload.php` to load the library.
-
-The concept of SimHash is described in [this article](https://titouangalopin.com/2014/06/29/simhash/). Here are few examples:
 
 ``` php
 <?php
@@ -52,17 +46,9 @@ at number three, scoring 2,190 runs in tests at an average of 60.83, and 9,921 r
 average of 69.86. He was chosen as one of the Wisden Cricketers of the Year.
 EOT;
 
-$simhash = new \Tga\SimHash\SimHash();
-$extractor = new \Tga\SimHash\Extractor\SimpleTextExtractor();
-$comparator = new Tga\SimHash\Comparator\GaussianComparator(3);
 
-$fp1 = $simhash->hash($extractor->extract($text1), \Tga\SimHash\SimHash::SIMHASH_64);
-$fp2 = $simhash->hash($extractor->extract($text2), \Tga\SimHash\SimHash::SIMHASH_64);
+$simHash = (new \VistarSvo\SimHash\Factories\DefaultSimHashFactory())->createSimHash(256);
 
-var_dump($fp1->getBinary());
-var_dump($fp2->getBinary());
-
-// Index between 0 and 1 : 0.80073740291681
 var_dump($comparator->compare($fp1, $fp2));
 ```
 
@@ -71,12 +57,4 @@ License
 
 This library is under the MIT license (see LICENSE.md)
 
-About
------
 
-SimHashPHP is mainly developed by Titouan Galopin.
-
-Reporting an issue or a feature request
----------------------------------------
-
-Issues and feature requests are tracked in the [Github issue tracker](https://github.com/tgalopin/SimHashPhp/issues).
