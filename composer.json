@@ -1,25 +1,30 @@
 {
-    "name": "tga/simhash-php",
-    "description": "SimHash similarities algorithm implementation for PHP 5.3",
+    "name": "vistarsvo/simhash",
+    "description": "SimHash similarities algorithm implementation for PHP >=8.3",
     "keywords": ["algorithm", "simhash", "similarities", "similarity", "difference"],
-    "homepage": "http://titouangalopin.com",
+    "homepage": "https://github.com/tgalopin/simhashphp",
     "license": "MIT",
     "authors": [
         {
             "name": "Titouan Galopin",
             "email": "galopintitouan@gmail.com"
+        },
+        {
+            "name": "Vladyslav Sokolenko",
+            "email": "vistar.svo@gmail.com"
         }
     ],
-    "replace": {
-        "leg/simhash-php": "*"
-    },
     "require": {
-        "php": ">=5.3",
-        "cocur/slugify": "1.*"
+        "php": ">=8.3",
+        "ext-gmp": "*",
+        "ext-bcmath": "*"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.5"
     },
     "autoload": {
         "psr-0": {
-            "Tga\\SimHash": "lib"
+            "VistarSvo\\SimHash": "lib"
         }
     }
 }

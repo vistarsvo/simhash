@@ -1,29 +1,15 @@
 <?php
 
-/*
- * This file is part of the SimHashPhp package.
- *
- * (c) Titouan Galopin <http://titouangalopin.com/>
- *
- * For the full copyright and license information, please view the LICENSE
- * file that was distributed with this source code.
- */
+namespace VistarSvo\SimHash\Vectorizer;
 
-namespace Tga\SimHash\Vectorizer;
-
-/**
- * The default vectorizer
- *
- * @author Titouan Galopin <http://titouangalopin.com/>
- */
-class DefaultVectorizer implements VectorizerInterface
+final class DefaultVectorizer implements Vectorizer
 {
     /**
-     * @param array $tokens
+     * @param array<string> $tokens
      * @param int $size
      * @return array
      */
-    public function vectorize(array $tokens, $size)
+    public function vectorize(array $tokens, int $size): array
     {
         $weightTokens = $this->createWeightTokens($tokens);
         $vector = array_fill(0, $size, 0);
@@ -41,13 +27,7 @@ class DefaultVectorizer implements VectorizerInterface
         return $vector;
     }
 
-    /**
-     * Create a tokens list using weights to ponder tokens importance
-     *
-     * @param array $tokens
-     * @return array
-     */
-    protected function createWeightTokens($tokens)
+    protected function createWeightTokens(array $tokens): array
     {
         $weightTokens = [];
 

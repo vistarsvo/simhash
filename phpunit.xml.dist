@@ -2,7 +2,7 @@
 
 <phpunit bootstrap="./tests/autoload.php" colors="false">
     <testsuites>
-        <testsuite name="SimHashPhp test suite">
+        <testsuite name="SimHash test suite">
             <directory suffix="Test.php">./tests/src</directory>
         </testsuite>
     </testsuites>

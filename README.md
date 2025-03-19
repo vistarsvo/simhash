@@ -1,9 +1,7 @@
 SimHashPHP
 ==========
 
-> This is the second version of SimHashPHP. If you are using the version 1 and don't want to
-> update your code, please refer to the `1.0-security` branch (https://github.com/tgalopin/SimHashPhp/tree/1.0-security).
-> The 1.0 branch will be maintained until the release of a v3 but only the v2 will have lastest features.
+> This is the another version of SimHashPHP. The fork. The original version is [here](https://github.com/tgalopin/simhashphp)
 
 What is SimHashPHP ?
 --------------------
