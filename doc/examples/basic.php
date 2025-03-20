@@ -26,7 +26,12 @@ $comparators = [
     'jaccard' => new \VistarSvo\SimHash\Comparator\JaccardComparator(),
     'threshold1' => new \VistarSvo\SimHash\Comparator\ThresholdComparator(1),
     'threshold10' => new \VistarSvo\SimHash\Comparator\ThresholdComparator(10),
-
+    'dice' => new \VistarSvo\SimHash\Comparator\DiceCoefficientComparator(),
+    'tversky' => new \VistarSvo\SimHash\Comparator\TverskyIndexComparator(),
+    'hamming1.0' => new \VistarSvo\SimHash\Comparator\HammingDistanceComparator(),
+    'hamming0.1' => new \VistarSvo\SimHash\Comparator\HammingDistanceComparator(0.1),
+    'hamming0.5' => new \VistarSvo\SimHash\Comparator\HammingDistanceComparator(0.5),
+    'weightedhamming' => new \VistarSvo\SimHash\Comparator\HammingDistanceComparator(0.5),
 ];
 
 $fp1 = $simHash->makeHash($text1);

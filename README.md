@@ -47,9 +47,33 @@ average of 69.86. He was chosen as one of the Wisden Cricketers of the Year.
 EOT;
 
 
+
 $simHash = (new \VistarSvo\SimHash\Factories\DefaultSimHashFactory())->createSimHash(256);
 
-var_dump($comparator->compare($fp1, $fp2));
+/** @var \VistarSvo\SimHash\Comparator\Comparator[] $comparators */
+$comparators = [
+    'gaussian30' => new \VistarSvo\SimHash\Comparator\GaussianComparator(30),
+    'gaussian10' => new \VistarSvo\SimHash\Comparator\GaussianComparator(10),
+    'gaussian4' => new \VistarSvo\SimHash\Comparator\GaussianComparator(4),
+    'gaussian1' => new \VistarSvo\SimHash\Comparator\GaussianComparator(1),
+    'cosine' => new \VistarSvo\SimHash\Comparator\CosineComparator(),
+    'jaccard' => new \VistarSvo\SimHash\Comparator\JaccardComparator(),
+    'threshold1' => new \VistarSvo\SimHash\Comparator\ThresholdComparator(1),
+    'threshold10' => new \VistarSvo\SimHash\Comparator\ThresholdComparator(10),
+    'dice' => new \VistarSvo\SimHash\Comparator\DiceCoefficientComparator(),
+    'tversky' => new \VistarSvo\SimHash\Comparator\TverskyIndexComparator(),
+    'hamming1.0' => new \VistarSvo\SimHash\Comparator\HammingDistanceComparator(),
+    'hamming0.1' => new \VistarSvo\SimHash\Comparator\HammingDistanceComparator(0.1),
+    'hamming0.5' => new \VistarSvo\SimHash\Comparator\HammingDistanceComparator(0.5),
+    'weightedhamming' => new \VistarSvo\SimHash\Comparator\HammingDistanceComparator(0.5),
+];
+
+$fp1 = $simHash->makeHash($text1);
+$fp2 = $simHash->makeHash($text2);
+
+foreach ($comparators as $comparatorName => $comparator) {
+    echo $comparatorName . ': ' . $comparator->compare($fp1, $fp2) . PHP_EOL;
+}
 ```
 
 License
